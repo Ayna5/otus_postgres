@@ -45,9 +45,6 @@ mysql -u mysql -p mysql < /home/mysql/mysql.sql
 sqlite3 mysql < /home/mysql/mysql.sql
 ```
 
-<img width="936" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/800f7890-4264-409b-9620-774b5c5c9710">
-<img width="940" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/e623f536-ccd5-4d3e-9fda-045bc13e7868">
-
 <img width="926" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/1306f680-4c56-4713-90bf-7a25e0a33bcd">
 <img width="935" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/b16a9ae3-9b7c-4d92-b18f-6e13065ff7ec">
 
