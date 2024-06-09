@@ -39,3 +39,9 @@ SELECT pg_size_pretty(pg_database_size('project'));
 
 <img width="747" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/a02feb88-3d9c-4509-a3e7-e8663835f7d1">
 
+Установка barman
+```
+sudo apt update && sudo apt install barman
+```
+
+<img width="803" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/099d9726-45f7-424e-bab5-6d80d0f28e04">
