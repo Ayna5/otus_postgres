@@ -39,9 +39,34 @@ SELECT pg_size_pretty(pg_database_size('project'));
 
 <img width="747" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/a02feb88-3d9c-4509-a3e7-e8663835f7d1">
 
-Установка barman
+## barman
+
+Установка
 ```
 sudo apt update && sudo apt install barman
 ```
 
-<img width="803" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/099d9726-45f7-424e-bab5-6d80d0f28e04">
+<img width="881" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/1cefe3fa-6482-41be-9aef-216f75427416">
+<img width="977" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/7f51de99-a9c2-417a-9bbd-14116338891c">
+
+Создаю пользователя barman в postgres
+```
+createuser --interactive -P barman
+```
+
+<img width="397" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/c68a7e53-6f26-47da-87de-e7f3d6c40d76">
+
+Записываю креды в файл .pgpass у пользователя barman на сервере бекапов
+```
+echo "158.160.130.154:5432:*:barman:pass" >> ~/.pgpass
+vim .pgpass
+```
+
+<img width="383" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/10e07138-832b-42b3-ba96-8567e9232652">
+
+Добавляю разрешение на подключени в pg_hba.conf
+
+<img width="806" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/ed87d091-b984-41d5-98e8-bd8906290363">
+
+
+
