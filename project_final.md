@@ -55,18 +55,26 @@ createuser --interactive -P barman
 createuser --replication -P streaming_barman
 ```
 
+<img width="437" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/f7d3c666-6246-4b74-8e87-880680242980">
+<img width="494" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/f5d96e55-da4e-40c3-9e59-93e4b41226ae">
+
+
+
 <img width="397" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/c68a7e53-6f26-47da-87de-e7f3d6c40d76">
 <img width="517" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/5e4248d6-10db-41ac-8be7-7382860d0bcc">
 
 Записываю креды в файл .pgpass у пользователя barman на сервере бекапов
 ```
-echo "158.160.130.154:5432:*:barman:pass" >> ~/.pgpass
+echo "158.160.134.199:5432:*:barman:" >> ~/.pgpass
 vim .pgpass
 ```
 
 <img width="383" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/10e07138-832b-42b3-ba96-8567e9232652">
 
 Добавляю разрешение на подключени в pg_hba.conf
+```
+sudo nano /etc/postgresql/15/main/pg_hba.conf
+```
 
 <img width="806" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/ed87d091-b984-41d5-98e8-bd8906290363">
 
