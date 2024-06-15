@@ -79,4 +79,12 @@ sudo nano /etc/postgresql/15/main/pg_hba.conf
 <img width="806" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/ed87d091-b984-41d5-98e8-bd8906290363">
 
 
+```
+psql -c 'SELECT version()' -U barman -h 158.160.129.234 postgres
+```
+
+<img width="950" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/1ee0800a-033f-46af-9927-9c50f714d9d9">
+
+
+
 
