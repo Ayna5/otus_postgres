@@ -41,7 +41,7 @@ SELECT pg_size_pretty(pg_database_size('project'));
 
 ## barman
 
-Установка
+Создадим VM и установим barman
 ```
 sudo apt update && sudo apt install barman
 ```
