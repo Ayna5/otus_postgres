@@ -52,9 +52,11 @@ sudo apt update && sudo apt install barman
 Создаю пользователя barman в postgres
 ```
 createuser --interactive -P barman
+createuser --replication -P streaming_barman
 ```
 
 <img width="397" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/c68a7e53-6f26-47da-87de-e7f3d6c40d76">
+<img width="517" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/5e4248d6-10db-41ac-8be7-7382860d0bcc">
 
 Записываю креды в файл .pgpass у пользователя barman на сервере бекапов
 ```
