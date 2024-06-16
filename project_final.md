@@ -144,4 +144,5 @@ barman receive-wal otus-postgres
 Из-за несовместимости pg_receivewal версии с PostgreSQL версии не смогла продвинуться далее :(
 
 Если бы конфигурация barman была настроена успешно, то нам оставалось бы только выполнить бекап.
+
 ```barman backup otus-postgres```
