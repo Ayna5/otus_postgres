@@ -2,42 +2,51 @@
 
 ## Характеристики тестового стенда
 
-|Характеристика|ВМ с PostgreSQL|
-|--------------|---------------|
-|Hostname|	otus-vm|
-|CPU|   2|
-|RAM| 4|
-|Тип накопителя|	HDD|
-|PostgreSQL| 	15.7|
+|Характеристика|ВМ с PostgreSQL|ВМ с бекапами|
+|--------------|---------------|---------------|
+|Hostname|	otus-postgres| otus-pgbackup |
+|CPU|   2|   2|
+|RAM| 4| 4|
+|Тип накопителя| SSD| SSD|
+|PostgreSQL| 15.7||
 
 ## Настройка тестового стенда
 
-Создадим VM и установим PostgreSQL.
+Создадим VM и установим PostgreSQL и создадим новый кластер.
 
 ```
 sudo apt update && sudo apt upgrade -y -q && sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && sudo apt-get update && sudo apt -y install postgresql-15
 ```
 
 <img width="940" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/fdca9c55-5351-496f-b594-4c0f272c5f71">
+<img width="923" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/dafd5362-ded1-4e4a-b8bb-5e2e3cb1276b">
 
-Создадим бд project и 5 таблиц. Заполним таблицы случанными данными по 10 млн. Размер бд = 3264 MB.
+Включила archive_mode
+```sql
+alter system set archive_mode = on;
+```
+
+<img width="377" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/d1d8d3c6-1b43-4df8-b393-27ce1cc54fa5">
+
+```sql
+alter system set archive_command = 'gzip < %p > /var/lib/postgresql/archive/%f.gz';
+select pg_reload_conf();
+```
+
+<img width="696" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/83d1b004-3e12-4de7-b448-27cd8fc29ede">
+
+Создадим бд project и 1 таблицу. Заполним таблицу случанными данными на 1 млн. Размер бд = 73 MB.
 ```sql
 CREATE DATABASE project;
 \c project
-CREATE TABLE table1 (id SERIAL, text TEXT);
-INSERT INTO table1 (text) SELECT md5(random()::text) FROM generate_series(1, 10000000);
-CREATE TABLE table2 (id SERIAL, text TEXT);
-INSERT INTO table2 (text) SELECT md5(random()::text) FROM generate_series(1, 10000000);
-CREATE TABLE table3 (id SERIAL, text TEXT);
-INSERT INTO table3 (text) SELECT md5(random()::text) FROM generate_series(1, 10000000);
-CREATE TABLE table4 (id SERIAL, text TEXT);
-INSERT INTO table4 (text) SELECT md5(random()::text) FROM generate_series(1, 10000000);
-CREATE TABLE table5 (id SERIAL, text TEXT);
-INSERT INTO table5 (text) SELECT md5(random()::text) FROM generate_series(1, 10000000);
+CREATE TABLE tab1 (id SERIAL, text TEXT);
+INSERT INTO tab1 (text) SELECT md5(random()::text) FROM generate_series(1, 1000000);
 SELECT pg_size_pretty(pg_database_size('project'));
 ```
 
-<img width="747" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/a02feb88-3d9c-4509-a3e7-e8663835f7d1">
+<img width="477" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/e5491679-e708-48fb-9956-7f7ce6703f18">
+<img width="695" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/0f8872bd-c341-44de-aceb-b47bfa232148">
+<img width="471" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/190f9cb9-d395-4a11-a12b-9a64a8ffa2bd">
 
 ## barman
 
