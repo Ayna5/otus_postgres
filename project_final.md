@@ -142,5 +142,6 @@ barman receive-wal otus-postgres
 <img width="694" alt="image" src="https://github.com/Ayna5/otus_postgres/assets/42717899/cb5581cd-d752-482e-a343-0060aeea93a3">
 
 Из-за несовместимости pg_receivewal версии с PostgreSQL версии не смогла продвинуться далее :(
+
 Если бы конфигурация barman была настроена успешно, то нам оставалось бы только выполнить бекап.
 ```barman backup otus-postgres```
