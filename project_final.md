@@ -146,5 +146,3 @@ barman receive-wal otus-postgres
 Если бы конфигурация barman была настроена успешно, то нам оставалось бы только выполнить бекап:
 
 ```barman backup otus-postgres```
-
-## pg_probackup
